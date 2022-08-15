@@ -19,14 +19,12 @@ public abstract class ItemText
 
 	protected string GetName(Item m)
     {
-        ArgumentNullException.ThrowIfNull(m.Name);
-        return m.Name;
+        return m.Name ?? string.Empty;
     }
 
     protected string GetDescription(Item m)
     {
-        ArgumentNullException.ThrowIfNull(m.Description);
-        return m.Description;
+        return m.Description ?? string.Empty;
     }
 
     protected string GetCategory(Item m)
