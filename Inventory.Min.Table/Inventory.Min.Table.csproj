@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="BetterConsoleTables" Version="2.0.4-rc1" />
 		<PackageReference Include="Unity" Version="5.11.10"/>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
 	</ItemGroup>
