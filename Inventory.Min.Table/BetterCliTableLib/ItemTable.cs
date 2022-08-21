@@ -19,8 +19,20 @@ public class ItemTable
             ForegroundColor = Color.Magenta
         };
         base.Table = new TableBuilder(headerFormat)
-            .AddColumn(nameof(LogModel.Id)
-                , rowsFormat: new CellFormat(foregroundColor: Color.FromArgb(255, 255, 0)))
+            .AddColumn(nameof(Item.Id))
+                .HeaderFormat(new CellFormat()
+                    {
+                        Alignment = Alignment.Center,
+                        ForegroundColor = Color.LightGoldenrodYellow
+                    })
+                .RowsFormat(new CellFormat(foregroundColor: Color.LightGoldenrodYellow))
+            .AddColumn(nameof(Item.Name))
+                .HeaderFormat(new CellFormat()
+                    {
+                        Alignment = Alignment.Center,
+                        ForegroundColor = Color.Green
+                    })
+                .RowsFormat(new CellFormat(foregroundColor: Color.Green))
         .Build();
         base.Table.Config = TableConfig.Unicode();
     }
@@ -30,7 +42,8 @@ public class ItemTable
         foreach (var item in items)
         {
             Table.AddRow(
-                item.Id);
+                item.Id
+                , item.Name);
         }
     }
 
@@ -40,7 +53,8 @@ public class ItemTable
         foreach (var item in items)
         {
             list.Add(new [] { 
-                item.Id.ToString()});
+                item.Id.ToString()
+                , item.Name ?? string.Empty });
         }
         return list;
     }
