@@ -17,13 +17,13 @@ public class MyTableLibSet
     protected override void RegisterColumnCalculators()
     {
         Container
-            .RegisterType<IColumnCalculator<Item>, ColumnCalculator<Item>>();
+            .RegisterSingleton<IColumnCalculator<Item>, ColumnCalculator<Item>>();
     }
 
     protected override void RegisterTableProviders()
     {
         Container
-            .RegisterType<ITableTextEditor, TableTextEditor>()
-            .RegisterType<IDataToText<Item>, ItemTable>();
+            .RegisterSingleton<ITableTextEditor, TableTextEditor>()
+            .RegisterSingleton<IDataToText<Item>, ItemTable>();
     }
 }
