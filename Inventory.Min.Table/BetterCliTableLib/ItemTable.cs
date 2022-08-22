@@ -1,3 +1,4 @@
+using System.Globalization;
 using Better.Console.Tables.Wrapper;
 using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
@@ -50,7 +51,7 @@ public class ItemTable
                 , item.Quantity?.ToString() ?? string.Empty
                 , item.CategoryId?.ToString() ?? string.Empty
                 , item.PurchaseDate?.ToString(Model.DateOnlyFormat) ?? string.Empty
-                , item.PurchasePrice?.ToString(Model.MoneyFormat) ?? string.Empty
+                , item.PurchasePrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
                 });
         }
         return list;
