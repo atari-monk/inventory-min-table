@@ -13,28 +13,38 @@ public class ItemTable
 {
     public ItemTable()
     {
-        var headerFormat = new CellFormat()
-        {
-            Alignment = Alignment.Center,
-            ForegroundColor = Color.Magenta
-        };
-        base.Table = new TableBuilder(headerFormat)
-            .AddColumn(nameof(Item.Id))
-                .HeaderFormat(new CellFormat()
-                    {
-                        Alignment = Alignment.Center,
-                        ForegroundColor = Color.LightGoldenrodYellow
-                    })
-                .RowsFormat(new CellFormat(foregroundColor: Color.LightGoldenrodYellow))
-            .AddColumn(nameof(Item.Name))
-                .HeaderFormat(new CellFormat()
-                    {
-                        Alignment = Alignment.Center,
-                        ForegroundColor = Color.Green
-                    })
-                .RowsFormat(new CellFormat(foregroundColor: Color.Green))
-        .Build();
-        base.Table.Config = TableConfig.Unicode();
+        var builder = new TableBuilder();
+        BuildColumn(builder, nameof(Item.Id), Color.LightGoldenrodYellow);
+        BuildColumn(builder, nameof(Item.Name), Color.Green);
+        BuildColumn(builder, nameof(Item.Description), Color.Crimson);
+        BuildColumn(builder, nameof(Item.Quantity), Color.Red);
+        Table = builder.Build();
+        Table.Config = TableConfig.Unicode();
+    }
+
+    private void BuildColumn(
+        TableBuilder builder
+        , string propName
+        , Color headerColor
+        , Color rowColor
+        , Alignment headerAlignment = Alignment.Center
+        , Alignment rowAlignment = Alignment.Center)
+    {
+        var headerFormat = new CellFormat(alignment:headerAlignment, foregroundColor: headerColor);
+        var rowFormat = new CellFormat(alignment:rowAlignment, foregroundColor: rowColor);
+        builder
+            .AddColumn(propName)
+                .HeaderFormat(headerFormat)
+                .RowsFormat(rowFormat);
+    }
+
+    private void BuildColumn(
+        TableBuilder builder
+        , string propName
+        , Color color
+        , Alignment alignment = Alignment.Center)
+    {
+        BuildColumn(builder, propName, color, color, alignment, alignment);
     }
 
     protected override void AddRowsToTable(IEnumerable<Item> items)
@@ -43,7 +53,9 @@ public class ItemTable
         {
             Table.AddRow(
                 item.Id
-                , item.Name);
+                , item.Name
+                , item.Description
+                , item.Quantity);
         }
     }
 
@@ -54,7 +66,10 @@ public class ItemTable
         {
             list.Add(new [] { 
                 item.Id.ToString()
-                , item.Name ?? string.Empty });
+                , item.Name ?? string.Empty
+                , item.Description ?? string.Empty
+                , item.Quantity?.ToString() ?? string.Empty
+                });
         }
         return list;
     }
