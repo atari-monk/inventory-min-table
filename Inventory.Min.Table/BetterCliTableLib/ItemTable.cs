@@ -2,6 +2,7 @@ using Better.Console.Tables.Wrapper;
 using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
+using ModelHelper;
 
 namespace Inventory.Min.BetterTable;
 
@@ -16,6 +17,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.Quantity));
         BuildColumn(builder, nameof(Item.CategoryId));
+        BuildColumn(builder, nameof(Item.PurchaseDate));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -29,7 +31,8 @@ public class ItemTable
                 , item.Name
                 , item.Description
                 , item.Quantity
-                , item.CategoryId);
+                , item.CategoryId
+                , item.PurchaseDate);
         }
     }
 
@@ -44,6 +47,7 @@ public class ItemTable
                 , item.Description ?? string.Empty
                 , item.Quantity?.ToString() ?? string.Empty
                 , item.CategoryId?.ToString() ?? string.Empty
+                , item.PurchaseDate?.ToString(Model.DateOnlyFormat) ?? string.Empty
                 });
         }
         return list;
