@@ -30,6 +30,8 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.VolumeUnitId));
         BuildColumn(builder, nameof(Item.Volume));
         BuildColumn(builder, nameof(Item.Mass));
+        BuildColumn(builder, nameof(Item.MassUnitId));
+
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -56,6 +58,8 @@ public class ItemTable
                 , item.VolumeUnitId
                 , item.Volume
                 , item.Mass
+                , item.MassUnitId
+
                 );
         }
     }
@@ -83,6 +87,7 @@ public class ItemTable
                 , item.VolumeUnitId?.ToString() ?? string.Empty
                 , item.Volume?.ToString() ?? string.Empty
                 , item.Mass?.ToString() ?? string.Empty
+                , item.MassUnitId?.ToString() ?? string.Empty
 
                 });
         }
