@@ -17,7 +17,9 @@ public class BetterTableSet
     public override void Register()
     {
         RegisterTable<BasicItemTable, Item>();
+        RegisterTable<BasicItemTableTest, Item>();
         RegisterTable<ItemTable, Item>();
+        RegisterTable<ItemTableTest, Item>();
     }
     
     private void RegisterTable<TType, TEntity>()
