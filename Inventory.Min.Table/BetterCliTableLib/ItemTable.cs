@@ -22,6 +22,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.PurchasePrice));
         BuildColumn(builder, nameof(Item.SellPrice));
         BuildColumn(builder, nameof(Item.ImagePath));
+        BuildColumn(builder, nameof(Item.LengthUnitId));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -39,7 +40,9 @@ public class ItemTable
                 , item.PurchaseDate
                 , item.PurchasePrice
                 , item.SellPrice
-                , item.ImagePath);
+                , item.ImagePath
+                , item.LengthUnitId
+                );
         }
     }
 
@@ -48,7 +51,7 @@ public class ItemTable
         var list = new List<object[]>();
         foreach (var item in items)
         {
-            list.Add(new [] { 
+            list.Add(new object[] { 
                 item.Id.ToString()
                 , item.Name ?? string.Empty
                 , item.Description ?? string.Empty
@@ -58,6 +61,8 @@ public class ItemTable
                 , item.PurchasePrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
                 , item.SellPrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
                 , item.ImagePath ?? string.Empty
+                , item.LengthUnitId?.ToString() ?? string.Empty
+
                 });
         }
         return list;
