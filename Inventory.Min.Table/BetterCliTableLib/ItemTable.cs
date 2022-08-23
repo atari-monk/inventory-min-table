@@ -24,6 +24,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.ImagePath));
         BuildColumn(builder, nameof(Item.LengthUnitId));
         BuildColumn(builder, nameof(Item.Length));
+        BuildColumn(builder, nameof(Item.Heigth));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -44,6 +45,7 @@ public class ItemTable
                 , item.ImagePath
                 , item.LengthUnitId
                 , item.Length
+                , item.Heigth
                 );
         }
     }
@@ -65,6 +67,7 @@ public class ItemTable
                 , item.ImagePath ?? string.Empty
                 , item.LengthUnitId?.ToString() ?? string.Empty
                 , item.Length?.ToString() ?? string.Empty
+                , item.Heigth?.ToString() ?? string.Empty
 
                 });
         }
