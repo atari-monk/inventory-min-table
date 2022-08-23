@@ -25,6 +25,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.LengthUnitId));
         BuildColumn(builder, nameof(Item.Length));
         BuildColumn(builder, nameof(Item.Heigth));
+        BuildColumn(builder, nameof(Item.Depth));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -46,6 +47,7 @@ public class ItemTable
                 , item.LengthUnitId
                 , item.Length
                 , item.Heigth
+                , item.Depth
                 );
         }
     }
@@ -68,6 +70,7 @@ public class ItemTable
                 , item.LengthUnitId?.ToString() ?? string.Empty
                 , item.Length?.ToString() ?? string.Empty
                 , item.Heigth?.ToString() ?? string.Empty
+                , item.Depth?.ToString() ?? string.Empty
 
                 });
         }
