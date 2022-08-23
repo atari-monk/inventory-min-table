@@ -29,6 +29,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.Diameter));
         BuildColumn(builder, nameof(Item.VolumeUnitId));
         BuildColumn(builder, nameof(Item.Volume));
+        BuildColumn(builder, nameof(Item.Mass));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -54,6 +55,7 @@ public class ItemTable
                 , item.Diameter
                 , item.VolumeUnitId
                 , item.Volume
+                , item.Mass
                 );
         }
     }
@@ -80,6 +82,7 @@ public class ItemTable
                 , item.Diameter?.ToString() ?? string.Empty
                 , item.VolumeUnitId?.ToString() ?? string.Empty
                 , item.Volume?.ToString() ?? string.Empty
+                , item.Mass?.ToString() ?? string.Empty
 
                 });
         }
