@@ -16,7 +16,6 @@ public class BetterTableSet
 
     public override void Register()
     {
-        Container.RegisterSingleton<ITableData, BasicItemTableData>();
         RegisterTable<BasicItemTable, Item>();
         RegisterTable<ItemTable, Item>();
     }

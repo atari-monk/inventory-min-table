@@ -8,16 +8,12 @@ namespace Inventory.Min.BetterTable;
 public class BasicItemTable
     : BetterTableToolbox<Item>
 {
-    private readonly ITableData data;
-
-    public BasicItemTable(ITableData data)
+    public BasicItemTable()
     {
-        this.data = data;
         var builder = new TableBuilder();
-        foreach (var column in data.Columns)
-        {
-            BuildColumn(builder, column.Key);
-        }
+        BuildColumn(builder, nameof(Item.Id));
+        BuildColumn(builder, nameof(Item.Name));
+        BuildColumn(builder, nameof(Item.Description));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
