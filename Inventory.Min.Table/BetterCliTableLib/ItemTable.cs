@@ -20,6 +20,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.CategoryId));
         BuildColumn(builder, nameof(Item.PurchaseDate));
         BuildColumn(builder, nameof(Item.PurchasePrice));
+        BuildColumn(builder, nameof(Item.SellPrice));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -35,7 +36,8 @@ public class ItemTable
                 , item.Quantity
                 , item.CategoryId
                 , item.PurchaseDate
-                , item.PurchasePrice);
+                , item.PurchasePrice
+                , item.SellPrice);
         }
     }
 
@@ -52,6 +54,7 @@ public class ItemTable
                 , item.CategoryId?.ToString() ?? string.Empty
                 , item.PurchaseDate?.ToString(Model.DateOnlyFormat) ?? string.Empty
                 , item.PurchasePrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
+                , item.SellPrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
                 });
         }
         return list;
