@@ -26,6 +26,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.Length));
         BuildColumn(builder, nameof(Item.Heigth));
         BuildColumn(builder, nameof(Item.Depth));
+        BuildColumn(builder, nameof(Item.Diameter));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -48,6 +49,7 @@ public class ItemTable
                 , item.Length
                 , item.Heigth
                 , item.Depth
+                , item.Diameter
                 );
         }
     }
@@ -71,6 +73,7 @@ public class ItemTable
                 , item.Length?.ToString() ?? string.Empty
                 , item.Heigth?.ToString() ?? string.Empty
                 , item.Depth?.ToString() ?? string.Empty
+                , item.Diameter?.ToString() ?? string.Empty
 
                 });
         }
