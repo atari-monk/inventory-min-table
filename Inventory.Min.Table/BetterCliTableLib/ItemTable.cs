@@ -23,6 +23,7 @@ public class ItemTable
         BuildColumn(builder, nameof(Item.SellPrice));
         BuildColumn(builder, nameof(Item.ImagePath));
         BuildColumn(builder, nameof(Item.LengthUnitId));
+        BuildColumn(builder, nameof(Item.Length));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -42,6 +43,7 @@ public class ItemTable
                 , item.SellPrice
                 , item.ImagePath
                 , item.LengthUnitId
+                , item.Length
                 );
         }
     }
@@ -62,6 +64,7 @@ public class ItemTable
                 , item.SellPrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
                 , item.ImagePath ?? string.Empty
                 , item.LengthUnitId?.ToString() ?? string.Empty
+                , item.Length?.ToString() ?? string.Empty
 
                 });
         }
