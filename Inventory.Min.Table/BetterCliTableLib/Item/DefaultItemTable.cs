@@ -20,6 +20,7 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Length));
         BuildColumn(builder, nameof(Item.Heigth));
         BuildColumn(builder, nameof(Item.Depth));
+        BuildColumn(builder, nameof(Item.State));
         //BuildColumn(builder, "CreatedDate");
         //BuildColumn(builder, "UpdatedDate");
         Table = builder.Build();
@@ -39,7 +40,8 @@ public class DefaultItemTable
                 , item.Mass
                 , item.Length
                 , item.Heigth
-                , item.Depth);
+                , item.Depth
+                , item.State);
         }
     }
 
@@ -58,6 +60,7 @@ public class DefaultItemTable
                 , item.Length?.ToString() ?? string.Empty
                 , item.Heigth?.ToString() ?? string.Empty
                 , item.Depth?.ToString() ?? string.Empty
+                , item.State?.Name?.ToString() ?? string.Empty
                 });
         }
         return list;
