@@ -15,6 +15,13 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.Category));
+        BuildColumn(builder, nameof(Item.Quantity));
+        BuildColumn(builder, nameof(Item.Mass));
+        BuildColumn(builder, nameof(Item.Length));
+        BuildColumn(builder, nameof(Item.Heigth));
+        BuildColumn(builder, nameof(Item.Depth));
+        //BuildColumn(builder, "CreatedDate");
+        //BuildColumn(builder, "UpdatedDate");
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -27,7 +34,12 @@ public class DefaultItemTable
                 item.Id
                 , item.Name
                 , item.Description
-                , item.Category?.Name);
+                , item.Category?.Name
+                , item.Quantity
+                , item.Mass
+                , item.Length
+                , item.Heigth
+                , item.Depth);
         }
     }
 
@@ -41,6 +53,11 @@ public class DefaultItemTable
                 , item.Name ?? string.Empty
                 , item.Description ?? string.Empty
                 , item.Category?.Name ?? string.Empty
+                , item.Quantity?.ToString() ?? string.Empty
+                , item.Mass?.ToString() ?? string.Empty
+                , item.Length?.ToString() ?? string.Empty
+                , item.Heigth?.ToString() ?? string.Empty
+                , item.Depth?.ToString() ?? string.Empty
                 });
         }
         return list;
