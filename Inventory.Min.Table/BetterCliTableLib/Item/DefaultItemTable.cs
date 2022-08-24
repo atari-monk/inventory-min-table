@@ -14,6 +14,7 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Id));
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
+        BuildColumn(builder, nameof(Item.Category));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -25,7 +26,8 @@ public class DefaultItemTable
             Table.AddRow(
                 item.Id
                 , item.Name
-                , item.Description);
+                , item.Description
+                , item.Category?.Name);
         }
     }
 
@@ -37,7 +39,9 @@ public class DefaultItemTable
             list.Add(new object[] { 
                 item.Id.ToString()
                 , item.Name ?? string.Empty
-                , item.Description ?? string.Empty});
+                , item.Description ?? string.Empty
+                , item.Category?.Name ?? string.Empty
+                });
         }
         return list;
     }

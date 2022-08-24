@@ -26,6 +26,8 @@ public class BetterTableDictionarySet
     {
 		if(store.Count > 0) 
 			return store;
+		Add(store, nameof(DefaultItemTable));
+		Add(store, nameof(DefaultItemTableTest));
 		Add(store, nameof(BasicItemTable));
 		Add(store, nameof(BasicItemTableTest));
 		Add(store, nameof(ItemTable));
