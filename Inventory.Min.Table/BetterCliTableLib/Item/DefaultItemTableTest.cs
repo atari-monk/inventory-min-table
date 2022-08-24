@@ -19,6 +19,7 @@ public class DefaultItemTableTest
         BuildColumn(builder, nameof(Item.Heigth));
         BuildColumn(builder, nameof(Item.Depth));
         BuildColumn(builder, nameof(Item.State));
+        BuildColumn(builder, nameof(Item.Parent));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -37,6 +38,7 @@ public class DefaultItemTableTest
                 , item.Heigth
                 , item.Depth
                 , item.State
+                , item.Parent
                 );
         }
     }
@@ -56,6 +58,7 @@ public class DefaultItemTableTest
                 , item.Heigth?.ToString() ?? string.Empty
                 , item.Depth?.ToString() ?? string.Empty
                 , item.State?.Name?.ToString() ?? string.Empty
+                , item.Parent?.Name?.ToString() ?? string.Empty
                 });
         }
         return list;
