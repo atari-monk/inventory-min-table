@@ -15,7 +15,8 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.Category));
-        BuildColumn(builder, nameof(Item.Quantity));
+        BuildColumn(builder, nameof(Item.InitialCount));
+        BuildColumn(builder, nameof(Item.CurrentCount));
         BuildColumn(builder, nameof(Item.Mass));
         BuildColumn(builder, nameof(Item.State));
         BuildColumn(builder, nameof(Item.Parent));
@@ -34,7 +35,8 @@ public class DefaultItemTable
                 , item.Name
                 , item.Description
                 , item.Category?.Name
-                , item.Quantity
+                , item.InitialCount
+                , item.CurrentCount
                 , item.Mass
                 , item.State
                 , item.Parent);
@@ -51,7 +53,8 @@ public class DefaultItemTable
                 , item.Name ?? string.Empty
                 , item.Description ?? string.Empty
                 , item.Category?.Name ?? string.Empty
-                , item.Quantity?.ToString() ?? string.Empty
+                , item.InitialCount?.ToString() ?? string.Empty
+                , item.CurrentCount?.ToString() ?? string.Empty
                 , item.Mass?.ToString() ?? string.Empty
                 , item.State?.Name?.ToString() ?? string.Empty
                 , item.Parent?.Name?.ToString() ?? string.Empty

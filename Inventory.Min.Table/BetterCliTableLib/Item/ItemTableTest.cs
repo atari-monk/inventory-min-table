@@ -14,7 +14,8 @@ public class ItemTableTest
         var builder = new TableBuilder();
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
-        BuildColumn(builder, nameof(Item.Quantity));
+        BuildColumn(builder, nameof(Item.InitialCount));
+        BuildColumn(builder, nameof(Item.CurrentCount));
         //BuildColumn(builder, nameof(Item.CategoryId));
         BuildColumn(builder, nameof(Item.PurchaseDate));
         BuildColumn(builder, nameof(Item.PurchasePrice));
@@ -43,7 +44,8 @@ public class ItemTableTest
             Table.AddRow(
                 item.Name
                 , item.Description
-                , item.Quantity
+                , item.InitialCount
+                , item.CurrentCount
                 //, item.CategoryId
                 , item.PurchaseDate
                 , item.PurchasePrice
@@ -73,7 +75,8 @@ public class ItemTableTest
             list.Add(new object[] { 
                 item.Name ?? string.Empty
                 , item.Description ?? string.Empty
-                , item.Quantity?.ToString() ?? string.Empty
+                , item.InitialCount?.ToString() ?? string.Empty
+                , item.CurrentCount?.ToString() ?? string.Empty
                 //, item.CategoryId?.ToString() ?? string.Empty
                 , item.PurchaseDate?.ToString(Model.DateOnlyFormat) ?? string.Empty
                 , item.PurchasePrice?.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture)) ?? string.Empty
