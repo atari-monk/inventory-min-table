@@ -28,6 +28,8 @@ public class BetterTableDictionarySet
 			return store;
 		Add(store, nameof(DefaultItemTable));
 		Add(store, nameof(DefaultItemTableTest));
+        Add(store, nameof(SizeItemTable));
+		Add(store, nameof(SizeItemTableTest));
 		Add(store, nameof(BasicItemTable));
 		Add(store, nameof(BasicItemTableTest));
 		Add(store, nameof(ItemTable));

@@ -18,6 +18,8 @@ public class BetterTableSet
     {
         RegisterTable<DefaultItemTable, Item>();
         RegisterTable<DefaultItemTableTest, Item>();
+        RegisterTable<SizeItemTable, Item>();
+        RegisterTable<SizeItemTableTest, Item>();
         RegisterTable<BasicItemTable, Item>();
         RegisterTable<BasicItemTableTest, Item>();
         RegisterTable<ItemTable, Item>();
