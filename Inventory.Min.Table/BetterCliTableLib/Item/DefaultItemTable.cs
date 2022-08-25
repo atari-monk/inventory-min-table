@@ -17,9 +17,6 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Category));
         BuildColumn(builder, nameof(Item.Quantity));
         BuildColumn(builder, nameof(Item.Mass));
-        BuildColumn(builder, nameof(Item.Length));
-        BuildColumn(builder, nameof(Item.Heigth));
-        BuildColumn(builder, nameof(Item.Depth));
         BuildColumn(builder, nameof(Item.State));
         BuildColumn(builder, nameof(Item.Parent));
         //BuildColumn(builder, "CreatedDate");
@@ -39,9 +36,6 @@ public class DefaultItemTable
                 , item.Category?.Name
                 , item.Quantity
                 , item.Mass
-                , item.Length
-                , item.Heigth
-                , item.Depth
                 , item.State
                 , item.Parent);
         }
@@ -59,9 +53,6 @@ public class DefaultItemTable
                 , item.Category?.Name ?? string.Empty
                 , item.Quantity?.ToString() ?? string.Empty
                 , item.Mass?.ToString() ?? string.Empty
-                , item.Length?.ToString() ?? string.Empty
-                , item.Heigth?.ToString() ?? string.Empty
-                , item.Depth?.ToString() ?? string.Empty
                 , item.State?.Name?.ToString() ?? string.Empty
                 , item.Parent?.Name?.ToString() ?? string.Empty
                 });
