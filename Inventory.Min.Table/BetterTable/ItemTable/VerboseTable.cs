@@ -1,17 +1,19 @@
 using System.Globalization;
+using Better.Console.Tables.Wrapper;
 using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
 using ModelHelper;
 
-namespace Inventory.Min.BetterTable;
+namespace Inventory.Min.BetterTable.ItemTable;
 
-public class ItemTableTest
-    : ItemTable
+public class VerboseTable
+    : BetterTable<Item>
 {
-    public ItemTableTest()
+    public VerboseTable()
     {
         var builder = new TableBuilder();
+        BuildColumn(builder, nameof(Item.Id));
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.InitialCount));
@@ -42,7 +44,8 @@ public class ItemTableTest
         foreach (var item in items)
         {
             Table.AddRow(
-                item.Name
+                item.Id
+                , item.Name
                 , item.Description
                 , item.InitialCount
                 , item.CurrentCount
@@ -73,7 +76,8 @@ public class ItemTableTest
         foreach (var item in items)
         {
             list.Add(new object[] { 
-                item.Name ?? string.Empty
+                item.Id.ToString()
+                , item.Name ?? string.Empty
                 , item.Description ?? string.Empty
                 , item.InitialCount?.ToString() ?? string.Empty
                 , item.CurrentCount?.ToString() ?? string.Empty

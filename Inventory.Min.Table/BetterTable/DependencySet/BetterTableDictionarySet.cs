@@ -26,25 +26,39 @@ public class BetterTableDictionarySet
     {
 		if(store.Count > 0) 
 			return store;
-		Add(store, nameof(DefaultItemTable));
-		Add(store, nameof(DefaultItemTableTest));
-        Add(store, nameof(SizeItemTable));
-		Add(store, nameof(SizeItemTableTest));
-		Add(store, nameof(BasicItemTable));
-		Add(store, nameof(BasicItemTableTest));
-		Add(store, nameof(ItemTable));
-		Add(store, nameof(ItemTableTest));
+		Add(store, ItemTablesTest.Basic);
+		Add(store, ItemTablesTest.Medium);
+		Add(store, ItemTablesTest.Size);
+		Add(store, ItemTablesTest.Verbose);
+		
+        Add(store, ItemTables.Basic);
+		Add(store, ItemTables.Medium);
+		Add(store, ItemTables.Size);
+		Add(store, ItemTables.Verbose);
 		return store;
     }
 
 	private void Add(
         IDictionary<string, IBetterTable<Item>> store
-		, string key)
+		, ItemTablesTest key)
 	{
-        store.Add(key, ResolveScript(key));
+        store.Add(key.ToString(), ResolveScript(key));
 	}
 
-    private IBetterTable<Item> ResolveScript(string key)
+    private IBetterTable<Item> ResolveScript(ItemTablesTest key)
+	{
+		return Container.Resolve<IBetterTable<Item>>(
+			key.ToString());
+	}
+
+    private void Add(
+        IDictionary<string, IBetterTable<Item>> store
+		, ItemTables key)
+	{
+        store.Add(key.ToString(), ResolveScript(key));
+	}
+
+    private IBetterTable<Item> ResolveScript(ItemTables key)
 	{
 		return Container.Resolve<IBetterTable<Item>>(
 			key.ToString());

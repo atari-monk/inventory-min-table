@@ -3,12 +3,12 @@ using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
 
-namespace Inventory.Min.BetterTable;
+namespace Inventory.Min.BetterTable.ItemTable;
 
-public class SizeItemTable
-    : BetterTableToolbox<Item>
+public class SizeTable
+    : BetterTable<Item>
 {
-    public SizeItemTable()
+    public SizeTable()
     {
         var builder = new TableBuilder();
         BuildColumn(builder, nameof(Item.Id));

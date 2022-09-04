@@ -5,13 +5,12 @@ using Inventory.Min.Data;
 
 namespace Inventory.Min.BetterTable;
 
-public class DefaultItemTable
-    : BetterTableToolbox<Item>
+public class MediumTableTest
+    : BetterTable<Item>
 {
-    public DefaultItemTable()
+    public MediumTableTest()
     {
         var builder = new TableBuilder();
-        BuildColumn(builder, nameof(Item.Id));
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.Category));
@@ -20,8 +19,6 @@ public class DefaultItemTable
         BuildColumn(builder, nameof(Item.Mass));
         BuildColumn(builder, nameof(Item.State));
         BuildColumn(builder, nameof(Item.Parent));
-        //BuildColumn(builder, "CreatedDate");
-        //BuildColumn(builder, "UpdatedDate");
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -31,15 +28,15 @@ public class DefaultItemTable
         foreach (var item in items)
         {
             Table.AddRow(
-                item.Id
-                , item.Name
+                item.Name
                 , item.Description
                 , item.Category?.Name
                 , item.InitialCount
                 , item.CurrentCount
                 , item.Mass
                 , item.State
-                , item.Parent);
+                , item.Parent
+                );
         }
     }
 
@@ -49,8 +46,7 @@ public class DefaultItemTable
         foreach (var item in items)
         {
             list.Add(new object[] { 
-                item.Id.ToString()
-                , item.Name ?? string.Empty
+                item.Name ?? string.Empty
                 , item.Description ?? string.Empty
                 , item.Category?.Name ?? string.Empty
                 , item.InitialCount?.ToString() ?? string.Empty

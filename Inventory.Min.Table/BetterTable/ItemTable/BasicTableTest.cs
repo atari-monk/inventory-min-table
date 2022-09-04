@@ -1,13 +1,14 @@
+using Better.Console.Tables.Wrapper;
 using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
 
-namespace Inventory.Min.BetterTable;
+namespace Inventory.Min.BetterTable.ItemTable;
 
-public class BasicItemTableTest
-    : BasicItemTable
+public class BasicTableTest
+    : BetterTable<Item>
 {
-    public BasicItemTableTest()
+    public BasicTableTest()
     {
         var builder = new TableBuilder();
         BuildColumn(builder, nameof(Item.Name));

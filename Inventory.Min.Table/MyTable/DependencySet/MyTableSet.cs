@@ -5,10 +5,10 @@ using Unity;
 
 namespace Inventory.Min.Table;
 
-public class MyTableLibSet 
+public class MyTableSet 
     : DataToTableSet
 {
-    public MyTableLibSet(
+    public MyTableSet(
         IUnityContainer container) 
         : base(container)
     {

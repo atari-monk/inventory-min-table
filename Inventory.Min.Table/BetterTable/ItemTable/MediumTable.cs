@@ -1,15 +1,17 @@
+using Better.Console.Tables.Wrapper;
 using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
 
-namespace Inventory.Min.BetterTable;
+namespace Inventory.Min.BetterTable.ItemTable;
 
-public class DefaultItemTableTest
-    : DefaultItemTable
+public class MediumTable
+    : BetterTable<Item>
 {
-    public DefaultItemTableTest()
+    public MediumTable()
     {
         var builder = new TableBuilder();
+        BuildColumn(builder, nameof(Item.Id));
         BuildColumn(builder, nameof(Item.Name));
         BuildColumn(builder, nameof(Item.Description));
         BuildColumn(builder, nameof(Item.Category));
@@ -18,6 +20,8 @@ public class DefaultItemTableTest
         BuildColumn(builder, nameof(Item.Mass));
         BuildColumn(builder, nameof(Item.State));
         BuildColumn(builder, nameof(Item.Parent));
+        //BuildColumn(builder, "CreatedDate");
+        //BuildColumn(builder, "UpdatedDate");
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -27,15 +31,15 @@ public class DefaultItemTableTest
         foreach (var item in items)
         {
             Table.AddRow(
-                item.Name
+                item.Id
+                , item.Name
                 , item.Description
                 , item.Category?.Name
                 , item.InitialCount
                 , item.CurrentCount
                 , item.Mass
                 , item.State
-                , item.Parent
-                );
+                , item.Parent);
         }
     }
 
@@ -45,7 +49,8 @@ public class DefaultItemTableTest
         foreach (var item in items)
         {
             list.Add(new object[] { 
-                item.Name ?? string.Empty
+                item.Id.ToString()
+                , item.Name ?? string.Empty
                 , item.Description ?? string.Empty
                 , item.Category?.Name ?? string.Empty
                 , item.InitialCount?.ToString() ?? string.Empty

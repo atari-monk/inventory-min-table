@@ -3,20 +3,17 @@ using BetterConsoles.Tables.Builders;
 using BetterConsoles.Tables.Configuration;
 using Inventory.Min.Data;
 
-namespace Inventory.Min.BetterTable;
+namespace Inventory.Min.BetterTable.ItemTable;
 
-public class SizeItemTableTest
-    : BetterTableToolbox<Item>
+public class BasicTable
+    : BetterTable<Item>
 {
-    public SizeItemTableTest()
+    public BasicTable()
     {
         var builder = new TableBuilder();
+        BuildColumn(builder, nameof(Item.Id));
         BuildColumn(builder, nameof(Item.Name));
-        BuildColumn(builder, nameof(Item.Length));
-        BuildColumn(builder, nameof(Item.Heigth));
-        BuildColumn(builder, nameof(Item.Depth));
-        //BuildColumn(builder, "CreatedDate");
-        //BuildColumn(builder, "UpdatedDate");
+        BuildColumn(builder, nameof(Item.Description));
         Table = builder.Build();
         Table.Config = TableConfig.Unicode();
     }
@@ -26,10 +23,9 @@ public class SizeItemTableTest
         foreach (var item in items)
         {
             Table.AddRow(
-                item.Name
-                , item.Length
-                , item.Heigth
-                , item.Depth);
+                item.Id
+                , item.Name
+                , item.Description);
         }
     }
 
@@ -39,11 +35,9 @@ public class SizeItemTableTest
         foreach (var item in items)
         {
             list.Add(new object[] { 
-                item.Name ?? string.Empty
-                , item.Length?.ToString() ?? string.Empty
-                , item.Heigth?.ToString() ?? string.Empty
-                , item.Depth?.ToString() ?? string.Empty
-                });
+                item.Id.ToString()
+                , item.Name ?? string.Empty
+                , item.Description ?? string.Empty});
         }
         return list;
     }
