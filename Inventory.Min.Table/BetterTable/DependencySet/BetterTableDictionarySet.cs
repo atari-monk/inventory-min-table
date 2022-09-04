@@ -26,10 +26,10 @@ public class BetterTableDictionarySet
     {
 		if(store.Count > 0) 
 			return store;
-		Add(store, ItemTablesTest.Basic);
-		Add(store, ItemTablesTest.Medium);
-		Add(store, ItemTablesTest.Size);
-		Add(store, ItemTablesTest.Verbose);
+		Add(store, ItemTablesTest.BasicTest);
+		Add(store, ItemTablesTest.MediumTest);
+		Add(store, ItemTablesTest.SizeTest);
+		Add(store, ItemTablesTest.VerboseTest);
 		
         Add(store, ItemTables.Basic);
 		Add(store, ItemTables.Medium);

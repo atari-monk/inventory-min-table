@@ -17,10 +17,10 @@ public class BetterTableSet
 
     public override void Register()
     {
-        RegisterTable<BasicTableTest, Item>(ItemTablesTest.Basic);
-        RegisterTable<MediumTableTest, Item>(ItemTablesTest.Medium);
-        RegisterTable<SizeTableTest, Item>(ItemTablesTest.Size);
-        RegisterTable<VerboseTableTest, Item>(ItemTablesTest.Verbose);
+        RegisterTable<BasicTableTest, Item>(ItemTablesTest.BasicTest);
+        RegisterTable<MediumTableTest, Item>(ItemTablesTest.MediumTest);
+        RegisterTable<SizeTableTest, Item>(ItemTablesTest.SizeTest);
+        RegisterTable<VerboseTableTest, Item>(ItemTablesTest.VerboseTest);
         
         RegisterTable<BasicTable, Item>(ItemTables.Basic);
         RegisterTable<MediumTable, Item>(ItemTables.Medium);
